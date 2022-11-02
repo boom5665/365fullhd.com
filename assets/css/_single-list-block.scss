@@ -1,0 +1,90 @@
+.single-movie-block {
+    display: block;
+    position: relative;
+    .poster-container {
+        margin-bottom: 10px;
+        position: relative;
+        .poster {
+            height: 295px;
+            width: 100%;
+            border-radius: 15px;
+            border: 4px solid $yellow-color-darker;
+            box-shadow: #464646 2px 2px 9px;
+            object-fit: cover;
+        }
+        .rating {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #48ee3b;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.4px;
+            color: #fff;
+            background-color: rgba(26, 25, 31, 0.7);
+        }
+        .poster-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(26, 25, 31, 0.8);
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .poster-play {
+                width: 48px;
+                height: 48px;
+            }
+        }
+        &:hover {
+            .poster-overlay {
+                opacity: 1;
+            }
+        }
+    }
+    .title {
+        font-size: 20px;
+        line-height: 30px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-wrap: break-word;
+        width: 100%;
+    }
+    .resolution {
+        background-color: $yellow-color-darker;
+        font-size: 14px;
+        color: #1a191f;
+        margin-right: 10px;
+        border-radius: 5px;
+        font-weight: 700;
+        padding: 6px;
+        opacity: 0.7;
+    }
+    .sound {
+        font-size: 14px;
+    }
+    .view {
+        font-size: 14px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        .view-icon {
+            margin-right: 5px;
+            color: $yellow-color-darker;
+            width: 16px;
+            height: 16px;
+        }
+    }
+}

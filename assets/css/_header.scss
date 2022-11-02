@@ -1,0 +1,23 @@
+#header {
+    background-color: #1a191f;
+    .navbar-dark .navbar-nav .nav-link {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.2s;
+        &:hover {
+            color: $yellow-color-darker;
+        }
+    }
+    .search-container {
+        width: 220px;
+        @media screen and (max-width: 1199px) and (min-width: 992px) {
+            width: 160px;
+        }
+        .input-submit {
+            transition: color 0.2s;
+            &:hover {
+                color: $yellow-color-darker;
+            }
+        }
+    }
+}

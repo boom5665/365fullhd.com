@@ -1,0 +1,83 @@
+.player-page {
+    .player-top-content {
+        font-size: 16px;
+        line-height: 26px;
+        color: rgba(255, 255, 255, 0.8);
+    }
+    .movie-description {
+        margin-top: 20px;
+        font-size: 16px;
+        line-height: 26px;
+        color: rgba(255, 255, 255, 0.8);
+        background: #363636;
+        padding: 10px;
+        letter-spacing: 0.4px;
+        border: 2px solid #fff;
+        border-radius: 10px;
+    }
+    .preview-header {
+        margin-top: 20px;
+        font-size: 18px;
+        line-height: 26px;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 8px;
+    }
+    .preview-container {
+        display: grid;
+        grid-template-columns: 27% 1fr;
+        grid-gap: 1%;
+        margin-bottom: 20px;
+        .preview-poster {
+            > img {
+                border-radius: 10px;
+            }
+        }
+        .preview-url {
+            .preview-movie {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .iframe-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .sound-container {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.ep-list {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    max-height: 400px;
+    overflow: auto;
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 576px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+    .ep-row {
+        background-color: #111;
+        border-radius: 4px;
+        text-align: center;
+        padding: 4px 0;
+        cursor: pointer;
+        &.active {
+            background-color: $yellow-color-darker;
+            color: #fff;
+        }
+        &:hover {
+            background-color: #767272;
+        }
+    }
+}

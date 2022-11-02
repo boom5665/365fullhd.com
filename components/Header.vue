@@ -1,0 +1,175 @@
+<template>
+    <div id="header">
+        <b-navbar toggleable="lg" type="dark" variant="transparent">
+            <b-navbar-brand to="/"><nuxt-img format="webp" :src="logo" height="40" width="155" :alt="SEOTitle" /></b-navbar-brand>
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+            <b-collapse id="nav-collapse" v-model="isCollapseOpen" is-nav>
+                <b-navbar-nav class="menu-list">
+                    <b-nav-item to="/" class="menu-btn">หน้าหลัก</b-nav-item>
+                    <b-nav-item to="/movie/type/inter-movie" class="menu-btn">หนังฝรั่ง</b-nav-item>
+                    <b-nav-item to="/movie/type/asia-movie" class="menu-btn">หนังเอเชีย</b-nav-item>
+                    <b-nav-item to="/movie/type/netflix-movie" class="menu-btn">หนัง NETFLIX</b-nav-item>
+                    <b-nav-item to="/av" class="menu-btn">หนัง AV</b-nav-item>
+                    <b-nav-item @click="showRequestPopup = true" class="menu-btn">ขอหนัง | ติดต่อโฆษณา</b-nav-item>
+                </b-navbar-nav>
+                <b-navbar-nav class="ml-auto">
+                    <div class="search-container input-container">
+                        <input class="input-control" v-model="searchInput" @keyup.enter="search()" @keyup="isLetter" placeholder="ค้นหา" />
+                        <div class="input-submit" @click="search()" data-toggle="collapse" data-target="#nav-collapse"><b-icon-search aria-hidden="true" /></div>
+                    </div>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
+        <div class="popup-container" id="request-popup" v-show="showRequestPopup" @click.self="showRequestPopup = false">
+            <div class="popup-content">
+                <div class="text-right"><b-icon-x-circle-fill class="popup-close-btn" @click="showRequestPopup = false" /></div>
+                <div class="tab-btn-list">
+                    <div class="tab-btn" @click="activeTab = 0" :class="{ active: activeTab == 0 }">ขอหนัง</div>
+                    <div class="tab-btn" @click="activeTab = 1" :class="{ active: activeTab == 1 }">ติดต่อโฆษณา</div>
+                </div>
+                <div class="tab-content-list">
+                    <transition-group name="fade" mode="out-in">
+                        <div class="tab-content" v-show="activeTab == 0" key="1">
+                            <textarea id="request-detail" class="popup-input" v-model="requestDetail" @keyup="isLetter"></textarea>
+                            <div class="text-center">
+                                <div class="submit-btn" @click="requestMovie()">ส่งข้อความ</div>
+                            </div>
+                        </div>
+                        <div class="tab-content" v-show="activeTab == 1" key="2">
+                            <label class="popup-label">ชื่อ สกุล *:</label>
+                            <input type="text" class="popup-input" v-model="contactName" @keyup="isLetter" />
+                            <label class="popup-label">อีเมล์ *:</label>
+                            <input type="text" class="popup-input" v-model="contactEmail" @keyup="isLetter" />
+                            <label class="popup-label">ไอดีไลน์ *:</label>
+                            <input type="text" class="popup-input" v-model="contactLine" @keyup="isLetter" />
+                            <label class="popup-label">เบอร์โทรศัพท์</label>
+                            <input type="text" class="popup-input" v-model="contactPhone" @keyup="isLetter" />
+                            <label class="popup-label">รายละเอียด</label>
+                            <input type="text" class="popup-input" v-model="contactDetail" @keyup="isLetter" />
+                            <div class="text-center">
+                                <div class="submit-btn" @click="contactAds()">ส่งข้อความ</div>
+                            </div>
+                        </div>
+                    </transition-group>
+                </div>
+            </div>
+        </div>
+        <div class="loader-container fixed" v-show="showLoader">
+            <nuxt-img format="webp" src="/loader.png" alt="loader" />
+        </div>
+    </div>
+</template>
+
+<script>
+import { mapState } from "vuex";
+export default {
+    props: {
+        _isAV: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+    },
+    data() {
+        return {
+            activeTab: 0,
+            searchInput: "",
+            showLoader: false,
+            showRequestPopup: false,
+            requestDetail: "",
+            contactName: "",
+            contactEmail: "",
+            contactLine: "",
+            contactPhone: "",
+            contactDetail: "",
+            isCollapseOpen: false,
+        };
+    },
+    computed: {
+        ...mapState({
+            SEOTitle: (state) => state.SEOTitle,
+            logo: (state) => state.logo,
+        }),
+    },
+    watch: {
+        $route(to, from) {
+            if (this.isCollapseOpen) {
+                this.$root.$emit("bv::toggle::collapse", "nav-collapse");
+            }
+        },
+    },
+    methods: {
+        requestMovie() {
+            const detail = this.requestDetail;
+            if (detail.trim() == "") {
+                alert("กรุณากรอกข้อมูลให้ครบ");
+                return;
+            }
+            const self = this;
+            this.showLoader = true;
+            this.$axios
+                .$post("requestmovie", {
+                    title_request: detail,
+                })
+                .then(function (response) {
+                    self.showRequestPopup = false;
+                    self.showLoader = false;
+                    self.requestDetail = "";
+                    if (response.code == 200) {
+                        alert("สำเร็จ");
+                    }
+                });
+        },
+        contactAds() {
+            const name = this.contactName;
+            const tel = this.contactPhone;
+            const email = this.contactEmail;
+            const lineid = this.contactLine;
+            const detail = this.contactDetail;
+            if (name.trim() == "" || tel.trim() == "" || lineid.trim() == "" || detail.trim() == "") {
+                alert("กรุณากรอกข้อมูลให้ครบ");
+                return;
+            }
+            if (!this.validateEmail(email)) {
+                alert("อีเมล์ไม่ถูกต้อง");
+                return;
+            }
+            const self = this;
+            this.showLoader = true;
+            this.$axios
+                .$post("requestads", {
+                    name: name,
+                    tel: tel,
+                    email: email,
+                    lineid: lineid,
+                    detail: detail,
+                })
+                .then(function (response) {
+                    self.showContactPopup = false;
+                    self.showLoader = false;
+                    self.contactName = "";
+                    self.contactPhone = "";
+                    self.contactEmail = "";
+                    self.contactLine = "";
+                    self.contactDetail = "";
+                    if (response.code == 200) {
+                        alert("สำเร็จ");
+                    }
+                });
+        },
+        search() {
+            const self = this;
+            this.showLoader = true;
+            let path = "/search";
+            if (this._isAV) path = "/av/search";
+            this.$router.push({ path: path, query: { s: this.searchInput } });
+            setTimeout(() => {
+                self.showLoader = false;
+            }, 1000);
+        },
+    },
+};
+</script>
+
+<style>
+</style>
