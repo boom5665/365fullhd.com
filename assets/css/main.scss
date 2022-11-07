@@ -1,5 +1,5 @@
-$yellow-color: #ffd55d;
-$yellow-color-darker: #ffd80e;
+$green-color: #02d667;
+$green-color-darker: rgba(16, 244, 139, 1);
 
 @import "./_font.scss";
 @import "./_header.scss";
@@ -36,14 +36,14 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: $yellow-color;
+    color: $green-color;
     text-decoration: none;
   }
 }
 
 ::selection {
   background: #1a191f;
-  color: $yellow-color-darker;
+  color: $green-color-darker;
   text-shadow: none;
 }
 
@@ -51,7 +51,7 @@ a {
   font-size: 14px;
   color: #abb7c4;
   font-weight: 500;
-  background-color: #ffd80e;
+  background-color: $green-color;
   color: rgb(33, 37, 41);
   padding: 8px;
   border-radius: 9px;
@@ -125,12 +125,12 @@ a {
       cursor: pointer;
       padding: 15px;
       background: #a0b3b02b;
-      color: #676665;
+      color: #000;
       font-size: 20px;
 
       &.active {
-        color: #634900;
-        background: linear-gradient(to bottom, #f9e885 0%, #caa23f 100%);
+        color: #000;
+        background: linear-gradient(to bottom, #01fb82 0%, #019b4b 100%);
       }
 
       &:first-child {
@@ -174,15 +174,15 @@ a {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 14px;
-    color: #634900;
-    background: linear-gradient(to bottom, #f9e885 0%, #caa23f 100%);
+    color: #000;
+    background: linear-gradient(to bottom, #01fb82 0%, #019b4b 100%);
     border-radius: 2rem;
   }
 }
 
 .web-title {
   background: -webkit-linear-gradient(transparent, transparent),
-    -webkit-linear-gradient(top, rgb(255, 231, 193) 0%, rgb(243, 228, 203) 26%, rgba(226, 186, 120, 1) 35%, rgb(245, 224, 190) 45%, rgb(216, 188, 142) 61%, rgba(213, 173, 109, 1) 100%);
+    -webkit-linear-gradient(top, rgb(3, 249, 27) 0%, rgb(1, 117, 13) 26%, rgb(24, 182, 40) 35%, rgb(2, 204, 22) 45%, rgb(2, 204, 22) 61%, rgb(2, 155, 17) 100%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 40px;
@@ -190,7 +190,7 @@ a {
 
 .web-slogan {
   font-size: 28px;
-  color: $yellow-color;
+  color: $green-color;
 }
 
 .custom-card-container {
@@ -273,7 +273,7 @@ a {
 }
 
 .full-category-line {
-  border-bottom: 2px solid rgb(109, 91, 0);
+  border-bottom: 2px solid rgb(2, 204, 22);
   overflow-x: auto;
   margin: 20px auto 70px;
   white-space: nowrap;
@@ -284,7 +284,7 @@ a {
     margin-right: 10px;
     font-size: 18px;
     letter-spacing: 0.4px;
-    color: $yellow-color-darker;
+    color: $green-color-darker;
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
     background: linear-gradient(to bottom, rgb(53 53 53) 0%, rgb(90 90 90) 51%, rgb(53 53 53) 100%);
@@ -295,8 +295,8 @@ a {
 
     &.nuxt-link-exact-active,
     &:hover {
-      color: #634900;
-      background: linear-gradient(to bottom, #f9e885 0%, #caa23f 100%);
+      color: #000;
+      background: linear-gradient(to bottom, #01fb82 0%, #019b4b 100%);
     }
 
     &:last-child {

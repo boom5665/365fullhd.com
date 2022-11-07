@@ -8,7 +8,7 @@
             height: 295px;
             width: 100%;
             border-radius: 15px;
-            border: 4px solid $yellow-color-darker;
+            border: 4px solid $green-color-darker;
             box-shadow: #464646 2px 2px 9px;
             object-fit: cover;
         }
@@ -63,7 +63,7 @@
         width: 100%;
     }
     .resolution {
-        background-color: $yellow-color-darker;
+        background-color: $green-color-darker;
         font-size: 14px;
         color: #1a191f;
         margin-right: 10px;
@@ -82,7 +82,7 @@
         align-items: center;
         .view-icon {
             margin-right: 5px;
-            color: $yellow-color-darker;
+            color: $green-color-darker;
             width: 16px;
             height: 16px;
         }
