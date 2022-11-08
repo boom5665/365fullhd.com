@@ -9,12 +9,12 @@
                     <b-nav-item to="/movie/type/inter-movie" class="menu-btn">หนังฝรั่ง</b-nav-item>
                     <b-nav-item to="/movie/type/asia-movie" class="menu-btn">หนังเอเชีย</b-nav-item>
                     <b-nav-item to="/movie/type/netflix-movie" class="menu-btn">หนัง NETFLIX</b-nav-item>
-                    <b-nav-item to="/av" class="menu-btn">หนัง AV</b-nav-item>
+                    <!-- <b-nav-item to="/av" class="menu-btn">หนัง AV</b-nav-item> -->
                     <b-nav-item @click="showRequestPopup = true" class="menu-btn">ขอหนัง | ติดต่อโฆษณา</b-nav-item>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto">
                     <div class="search-container input-container">
-                        <input class="input-control" v-model="searchInput" @keyup.enter="search()" @keyup="isLetter" placeholder="ค้นหา" />
+                        <input class="input-control" v-model="searchInput" :maxlength="maxserch" @keyup.enter="search()" @keyup="isLetter" placeholder="ค้นหา" />
                         <div class="input-submit" @click="search()" data-toggle="collapse" data-target="#nav-collapse"><b-icon-search aria-hidden="true" /></div>
                     </div>
                 </b-navbar-nav>
@@ -32,22 +32,22 @@
                         <div class="tab-content" v-show="activeTab == 0" key="1">
                             <textarea id="request-detail" class="popup-input" v-model="requestDetail" @keyup="isLetter"></textarea>
                             <div class="text-center">
-                                <div class="submit-btn" @click="requestMovie()">ส่งข้อความ</div>
+                            <div class="submit-btn" @click="saverequestMovie(requestDetail)">ส่งข้อความ</div>
                             </div>
                         </div>
                         <div class="tab-content" v-show="activeTab == 1" key="2">
                             <label class="popup-label">ชื่อ สกุล *:</label>
-                            <input type="text" class="popup-input" v-model="contactName" @keyup="isLetter" />
+                           <input type="text" class="popup-input" v-model="contactName" @keyup="isLetter" />
                             <label class="popup-label">อีเมล์ *:</label>
-                            <input type="text" class="popup-input" v-model="contactEmail" @keyup="isLetter" />
+                          <input type="email" class="popup-input" v-model="contactEmail" @keyup="isEmail" />
                             <label class="popup-label">ไอดีไลน์ *:</label>
-                            <input type="text" class="popup-input" v-model="contactLine" @keyup="isLetter" />
+                             <input type="text" class="popup-input" v-model="contactLine" @keyup="isline" />
                             <label class="popup-label">เบอร์โทรศัพท์</label>
-                            <input type="text" class="popup-input" v-model="contactPhone" @keyup="isLetter" />
+                         <input type="text" :maxlength="max" class="popup-input" v-model="contactPhone" @keyup="isNum" />
                             <label class="popup-label">รายละเอียด</label>
-                            <input type="text" class="popup-input" v-model="contactDetail" @keyup="isLetter" />
+                           <input type="text" class="popup-input" style="height: 150px;" v-model="contactDetail" @keyup="isLetter" />
                             <div class="text-center">
-                                <div class="submit-btn" @click="contactAds()">ส่งข้อความ</div>
+                                <div class="submit-btn" @click="save()">ส่งข้อความ</div>
                             </div>
                         </div>
                     </transition-group>
@@ -83,6 +83,8 @@ export default {
             contactPhone: "",
             contactDetail: "",
             isCollapseOpen: false,
+            max: 10,
+            maxserch: 40,
         };
     },
     computed: {
@@ -97,8 +99,89 @@ export default {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
             }
         },
+
+        showRequestPopup(val) {
+            if (val == false) {
+                this.requestDetail = "";
+                this.contactName = "";
+                this.contactEmail = "";
+                this.contactLine = "";
+                this.contactPhone = "";
+                this.contactDetail = "";
+            }
+        },
+        requestDetail(val) {
+            var tn = /w+[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
+            var tw = /^\s+|\s+$/gm;
+            if (tn.test(val) == true || tw.test(val) == true) {
+                this.requestDetail = "";
+            }
+        },
+        contactName(val) {
+            var tn = /w+[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
+            if (tn.test(val) == true) {
+                this.contactName = "";
+            }
+        },
+        contactLine(val) {
+            var tn = /^\w+[\{\}:-=|?&;$%"<>()#^!\*+,]/;
+            if (tn.test(val) == true) {
+                this.contactLine = "";
+            }
+        },
+        contactDetail(val) {
+            var tn = /[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
+            if (tn.test(val) == true) {
+                this.contactDetail = "";
+            }
+        },
+        contactPhone(val) {
+            var tn = /[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
+            var nm = /^[1-9]\d*$/;
+            if (tn.test(val) == true || nm.test(val) == true) {
+                // console.log(nm.test(val));
+                this.contactPhone = "";
+            }
+        },
+        searchInput(val) {
+            var tn = /[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
+            if (tn.test(val) == true) {
+                this.searchInput = "";
+            }
+        },
     },
     methods: {
+        saverequestMovie(requestDetail) {
+            if (this.requestDetail == "") {
+                alert("กรุณากรอกข้อมูลให้ครบ");
+            } else {
+                if (requestDetail) {
+                    if (requestDetail) {
+                        this.requestMovie();
+                    } else {
+                        alert("email ไม่ถูกต้อง");
+                        this.requestDetail = "";
+                    }
+                }
+            }
+        },
+
+        save() {
+            if (
+                this.contactName.trim() == "" ||
+                this.contactName == "-" ||
+                this.contactEmail.trim() == "" ||
+                this.contactLine.trim() == "" ||
+                this.contactPhone.length < 10 ||
+                this.contactPhone == "" ||
+                this.contactDetail.trim() == ""
+            ) {
+                alert("กรุณากรอกข้อมูลให้ครบ");
+            } else {
+                this.contactAds();
+                // alert(" สำเร็จ");
+            }
+        },
         requestMovie() {
             const detail = this.requestDetail;
             if (detail.trim() == "") {

@@ -4,7 +4,7 @@
             <Header :_isAV="true" />
             <Banner />
             <div class="text-center">
-                <h2 class="web-title">ruaymovie</h2>
+                <h2 class="web-title">365fullhd</h2>
                 <h3 class="web-slogan">{{ slogan }}</h3>
             </div>
         </b-container>
@@ -66,12 +66,12 @@ export default {
                 {
                     property: "og:url",
                     name: "og:url",
-                    content: "https://www.ruaymovie.com",
+                    content: "https://www.365fullhd.com",
                 },
                 {
                     property: "og:site_name",
                     name: "og:site_name",
-                    content: "ruaymovie",
+                    content: "365fullhd",
                 },
                 {
                     property: "og:image",

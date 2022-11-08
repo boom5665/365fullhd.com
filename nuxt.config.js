@@ -54,13 +54,13 @@ export default {
         baseURL: process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/",
         headers: {
             common: {
-                domain: "ruaymovie",
+                domain: "365fullhd",
             },
         },
     },
 
     // sitemap: {
-    //     hostname: "https://www.ruaymovie.com",
+    //     hostname: "https://www.365fullhd.com",
     //     gzip: true,
     //     cacheTime: 1000 * 60 * 60 * 24,
     //     routes: async () => {
@@ -85,7 +85,7 @@ export default {
     robots: {
         UserAgent: "*",
         Allow: "/",
-        Sitemap: "https://www.ruaymovie.com/sitemap.xml"
+        Sitemap: "https://www.365fullhd.com/sitemap.xml"
     },
 
     bootstrapVue: {
