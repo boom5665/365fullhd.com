@@ -182,9 +182,10 @@ export default {
             const self = this;
             this.showLoader = true;
             let type_id = 0;
-            if (this._isAV) type_id = 1
+            if (this._isAV) type_id = 1;
             this.$axios
                 .$post("moviebroken", {
+                    productname: process.env.PRODUCTNAME,
                     movie_id: self._id,
                     movie_type: type_id,
                     reason: detail,
