@@ -102,6 +102,7 @@ export default {
             SEOTitle: (state) => state.SEOTitle,
             SEODescription: (state) => state.SEODescription,
             adsBottom: (state) => state.adsBottom,
+            
         }),
     },
     mounted() {},
