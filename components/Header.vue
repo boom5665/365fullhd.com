@@ -240,16 +240,21 @@ export default {
                     }
                 });
         },
-        search() {
-            const self = this;
-            this.showLoader = true;
-            let path = "/search";
-            if (this._isAV) path = "/av/search";
-            this.$router.push({ path: path, query: { s: this.searchInput } });
-            setTimeout(() => {
-                self.showLoader = false;
-            }, 1000);
+           search() {
+            if (this.searchInput.trim() != "" ) {
+                const self = this;
+                this.showLoader = true;
+                let path = "/search";
+                if (this._isAV) path = "/av/search";
+                this.$router.push({ path: path, query: { s: this.searchInput } });
+                setTimeout(() => {
+                    self.showLoader = false;
+                }, 1000);
+            } else {
+                alert("กรุณาพิมชื่อมังงะ");
+            }
         },
+
     },
 };
 </script>
