@@ -34,7 +34,7 @@ a {
   text-decoration: none;
   transition: color 0.2s;
   text-decoration: none;
-
+  cursor: pointer;
   &:hover {
     color: $green-color;
     text-decoration: none;
@@ -177,6 +177,7 @@ a {
     color: #fff;
     background: linear-gradient(to bottom, #01fb82 0%, #019b4b 100%);
     border-radius: 2rem;
+    cursor: pointer;
   }
 }
 
