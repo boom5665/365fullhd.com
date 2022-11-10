@@ -184,7 +184,7 @@ export default {
             let type_id = 0;
             if (this._isAV) type_id = 1;
             this.$axios
-                .$post("moviebroken", {
+                .$post("requestbroken", {
                     productname: process.env.PRODUCTNAME,
                     movie_id: self._id,
                     movie_type: type_id,

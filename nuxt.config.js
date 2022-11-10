@@ -39,6 +39,10 @@ export default {
     ],
   },
 
+  env: {
+    PRODUCTNAME: process.env.PRODUCTNAME || "365fullhd",
+  },
+
   publicRuntimeConfig: {
     baseApiUrl: process.env.BASE_API_URL,
   },
@@ -80,9 +84,7 @@ export default {
       },
     },
   },
-  env: {
-    PRODUCTNAME: process.env.PRODUCTNAME || "365fullhd",
-  },
+
   // sitemap: {
   //     hostname: "https://www.365fullhd.com",
   //     gzip: true,
