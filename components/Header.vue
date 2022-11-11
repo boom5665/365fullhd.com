@@ -113,7 +113,8 @@ export default {
         requestDetail(val) {
             var tn = /w+[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
             var tw = /^\s+|\s+$/gm;
-            if (tn.test(val) == true || tw.test(val) == true) {
+            var tn = /^[\{\}:-=_|?&;$%@"<>()#^!\*+,]/;
+            if (tn.test(val) == true || tw.test(val) == true || tn.test(val) == true) {
                 this.requestDetail = "";
             }
         },
