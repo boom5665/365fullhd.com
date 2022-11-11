@@ -2,9 +2,9 @@
     <div class="ads-container">
         <div id="adsplayer"></div>
         <a :href="_adsArray[currentAds].url" target="_blank" class="adsclick" v-show="showAdsClick" @click="updateAdsVideoClick(_adsArray[currentAds])"></a>
-        <!-- <div class="registerads" v-show="showAdsClick">
+        <div class="registerads" v-show="showAdsClick">
             <a :href="_adsArray[currentAds].url" target="_blank" @click="updateAdsVideoClick(_adsArray[currentAds])"><span id="register">สมัครสมาชิก</span></a>
-        </div> -->
+        </div>
         <div class="skipads" v-if="showAdsClick && currentTime > 0">กรุณารอ {{ currentTime }} วิ</div>
         <div class="skipads" v-if="showAdsClick && currentTime == 0" @click="skipAds()">กดเพื่อข้าม</div>
     </div>
