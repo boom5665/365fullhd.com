@@ -252,7 +252,7 @@ export default {
                     self.showLoader = false;
                 }, 1000);
             } else {
-                alert("กรุณาพิมชื่อมังงะ");
+                alert("กรุณาพิมชื่อหนัง");
             }
         },
 
