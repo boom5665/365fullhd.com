@@ -35,6 +35,7 @@ a {
   transition: color 0.2s;
   text-decoration: none;
   cursor: pointer;
+
   &:hover {
     color: $green-color;
     text-decoration: none;
@@ -354,12 +355,42 @@ a {
   }
 }
 
+
 .arrow-right {
+  @media screen and (max-width: 1024px) {
+    right: 0px !important;
+    top: -20% !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    right: 0px !important;
+    top: -20% !important;
+  }
+
+  @media screen and (max-width: 576px) {
+    right: -10px !important;
+    top: -20% !important;
+  }
+
   right: 0px !important;
   top: -20% !important;
 }
 
 .arrow-left {
+  @media screen and (max-width: 1024px) {
+    left: 90% !important;
+    top: -20% !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    left: 85% !important;
+    top: -20% !important;
+  }
+
+  @media screen and (max-width: 576px) {
+    left: 80% !important;
+    top: -20% !important;
+  }
   left: 93% !important;
   top: -20% !important;
 }

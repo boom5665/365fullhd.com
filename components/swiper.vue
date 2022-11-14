@@ -1,7 +1,7 @@
 <template>
     <div>
        <h1>หนังยอดนิยม</h1>
-        <vue-glide :breakpoints="{ 400: { perView: 1 }, 700: { perView: 1 }, 1000: { perView: 1 }, 1200: { perView: 1 } }" v-model="active" v-bind="carouselOptions" v-if="movieList.length > 0">
+        <vue-glide :breakpoints="{ 400: { perView: 1 }, 700: { perView: 2 }, 1000: { perView: 3 }, 1200: { perView: 4 } }" v-model="active" v-bind="carouselOptions" v-if="movieList.length > 0">
             <template slot="control">
 
                 <button  class="arrow-left" data-glide-dir="<"><div class="mr-3" ><b-icon-arrow-left style="width: 24px; height: 36px" aria-hidden="true" /></div></button>
