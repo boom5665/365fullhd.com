@@ -80,7 +80,7 @@ export default {
     baseURL: process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/",
     headers: {
       common: {
-        domain: "365fullhd",
+        domain: process.env.DOMAIN || "devmovie",
       },
     },
   },
