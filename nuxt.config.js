@@ -6,7 +6,7 @@ export default {
     port: 8007, // default: 3000
   },
   head: {
-    title: "365fullhd",
+    title: "movie365",
     htmlAttrs: {
       lang: "th",
       translate: "no",
@@ -40,7 +40,7 @@ export default {
   },
 
   env: {
-    PRODUCTNAME: process.env.PRODUCTNAME || "365fullhd",
+    PRODUCTNAME: process.env.PRODUCTNAME || "movie365",
   },
 
   publicRuntimeConfig: {
@@ -69,7 +69,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    // "@nuxtjs/sitemap",
+    "@nuxtjs/sitemap",
     "@nuxt/image",
     "bootstrap-vue/nuxt",
     "@nuxtjs/robots",
@@ -80,38 +80,38 @@ export default {
     baseURL: process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/",
     headers: {
       common: {
-        domain: process.env.DOMAIN || "devmovie",
+        domain: process.env.DOMAIN || "movie365",
       },
     },
   },
 
-  // sitemap: {
-  //     hostname: "https://www.365fullhd.com",
-  //     gzip: true,
-  //     cacheTime: 1000 * 60 * 60 * 24,
-  //     routes: async () => {
-  //         const response = await axios.post(
-  //             (process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/") + "gen-sitemap-rawdata",
-  //             {},
-  //             {
-  //                 headers: {
-  //                     domain: "ruaymovie",
-  //                 },
-  //             }
-  //         );
-  //         return response.data.result.map((x) => {
-  //             return {
-  //                 url: x.loc,
-  //                 priority: x.priority,
-  //             };
-  //         });
-  //     },
-  // },
+  sitemap: {
+      hostname: "https://movie365.live",
+      gzip: true,
+      cacheTime: 1000 * 60 * 60 * 24,
+      routes: async () => {
+          const response = await axios.post(
+              (process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/") + "gen-sitemap-rawdata",
+              {},
+              {
+                  headers: {
+                      domain: "movie365",
+                  },
+              }
+          );
+          return response.data.result.map((x) => {
+              return {
+                  url: x.loc,
+                  priority: x.priority,
+              };
+          });
+      },
+  },
 
   robots: {
     UserAgent: "*",
     Allow: "/",
-    Sitemap: "https://www.365fullhd.com/sitemap.xml"
+    Sitemap: "https://movie365.live/sitemap.xml"
   },
 
   bootstrapVue: {
