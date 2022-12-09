@@ -69,7 +69,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    // "@nuxtjs/sitemap",
+    "@nuxtjs/sitemap",
     "@nuxt/image",
     "bootstrap-vue/nuxt",
     "@nuxtjs/robots",
