@@ -1,6 +1,6 @@
 <template>
     <client-only>
-        <MovieList :_title="typeObj.name_th" :_category="_slug" />
+        <MovieList  :_title="typeObj.name_th" :_category="_slug" />
     </client-only>
 </template>
 
@@ -8,6 +8,7 @@
 import { mapState } from "vuex";
 export default {
     name: "movieCategorySlug",
+    layout: "movie",
     async asyncData({ params, $axios }) {
         const res = await $axios.$get("movie/listcate?slug=" + params.slug);
         const typeObj = res.result[0];
