@@ -52,11 +52,11 @@ export default {
         return {
             title: this.SEOTitle,
             meta: [
-                {
-                    hid: "description",
-                    name: "description",
-                    content: this.SEODescription.replace("หมวดหมู่ {{category}} ", ""),
-                },
+                // {
+                //     hid: "description",
+                //     name: "description",
+                //     content: this.SEODescription.replace("หมวดหมู่ {{category}} ", ""),
+                // },
                 {
                     name: "keywords",
                     content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
@@ -66,11 +66,11 @@ export default {
                     name: "og:title",
                     content: this.SEOTitle,
                 },
-                {
-                    property: "og:description",
-                    name: "og:description",
-                    content: this.SEODescription.replace("หมวดหมู่ {{category}} ", "") || "mugquwas open graph meta description",
-                },
+                // {
+                //     property: "og:description",
+                //     name: "og:description",
+                //     content: this.SEODescription.replace("หมวดหมู่ {{category}} ", "") || "mugquwas open graph meta description",
+                // },
                 {
                     property: "og:url",
                     name: "og:url",

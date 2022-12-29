@@ -23,7 +23,7 @@ export default {
                 {
                     hid: "description",
                     name: "description",
-                    content: this.SEODescription.replace("{{category}}", this.typeObj.name_th) || "mugquwas open graph meta description",
+                    content: "รวมหนังออนไลน์ ซีรีย์ ออนไลน์ หมวดหมู่ " + this.typeObj.name_th + "มีทั้งพากย์ไทย และซับไทย ดูฟรี 24 ชม.",
                 },
                 {
                     name: "keywords",
@@ -37,7 +37,7 @@ export default {
                 {
                     property: "og:description",
                     name: "og:description",
-                    content: this.SEODescription.replace("{{category}}", this.typeObj.name_th) || "mugquwas open graph meta description",
+                    content: "รวมหนังออนไลน์ ซีรีย์ ออนไลน์ หมวดหมู่ " + this.typeObj.name_th + "มีทั้งพากย์ไทย และซับไทย ดูฟรี 24 ชม.",
                 },
                 {
                     property: "og:url",
