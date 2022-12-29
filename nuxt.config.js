@@ -86,28 +86,28 @@ export default {
     },
   },
 
-  // sitemap: {
-  //     hostname: "https://movie365.live",
-  //     gzip: true,
-  //     cacheTime: 1000 * 60 * 60 * 24,
-  //     routes: async () => {
-  //         const response = await axios.post(
-  //             (process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/") + "gen-sitemap-rawdata",
-  //             {},
-  //             {
-  //                 headers: {
-  //                     domain: process.env.DOMAIN || "devmovie",
-  //                 },
-  //             }
-  //         );
-  //         return response.data.result.map((x) => {
-  //             return {
-  //                 url: x.loc,
-  //                 priority: x.priority,
-  //             };
-  //         });
-  //     },
-  // },
+  sitemap: {
+      hostname: "https://movie365.live",
+      gzip: true,
+      cacheTime: 1000 * 60 * 60 * 24,
+      routes: async () => {
+          const response = await axios.post(
+              (process.env.BASE_API_URL || "https://dev-movie-api.pirate168.com/api/v1/") + "gen-sitemap-rawdata",
+              {},
+              {
+                  headers: {
+                      domain: process.env.DOMAIN || "devmovie",
+                  },
+              }
+          );
+          return response.data.result.map((x) => {
+              return {
+                  url: x.loc,
+                  priority: x.priority,
+              };
+          });
+      },
+  },
 
   robots: {
     UserAgent: "*",
