@@ -25,7 +25,7 @@ export default {
                 {
                     hid: "description",
                     name: "description",
-                    content:  this.movieObj.full_name + " | ฉายปี : " + this.movieObj.year + " | คะแนน : " + this.movieObj.ratescore + " ดูฟรี พากไทย ซับไทย ระบบ HD FULLHD  "
+                    content:  this.movieObj.full_name + " | ฉายปี : " + this.movieObj.year + " | คะแนน : " + this.movieObj.ratescore + " ดูฟรี พากย์ไทย ซับไทย ระบบ HD FULLHD  "
                 },
                 {
                     name: "keywords",
@@ -39,7 +39,7 @@ export default {
                 {
                     property: "og:description",
                     name: "og:description",
-                    content: this.movieObj.full_name + " | ฉายปี : " + this.movieObj.year + " | คะแนน : " + this.movieObj.ratescore + " ดูฟรี พากไทย ซับไทย ระบบ HD FULLHD " || "mugquwas open graph meta description",
+                    content: this.movieObj.full_name + " | ฉายปี : " + this.movieObj.year + " | คะแนน : " + this.movieObj.ratescore + " ดูฟรี พากย์ไทย ซับไทย ระบบ HD FULLHD " || "mugquwas open graph meta description",
                 },
                 {
                     property: "og:url",
