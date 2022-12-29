@@ -39,83 +39,83 @@
 
 <script>
 import { mapState } from "vuex";
-export default {
-    head() {
-        return {
-            title: this.SEOTitle,
-            meta: [
-                {
-                    hid: "description",
-                    name: "description",
-                    content: this.SEODescription,
-                },
-                {
-                    name: "keywords",
-                    content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
-                },
-                {
-                    property: "og:title",
-                    name: "og:title",
-                    content: this.SEOTitle,
-                },
-                {
-                    property: "og:description",
-                    name: "og:description",
-                    content: this.SEODescription || "mugquwas open graph meta description",
-                },
-                {
-                    property: "og:url",
-                    name: "og:url",
-                    content: "https://www.365fullhd.com",
-                },
-                {
-                    property: "og:site_name",
-                    name: "og:site_name",
-                    content: "365fullhd",
-                },
-                {
-                    property: "og:image",
-                    name: "og:image",
-                    content: this.logo,
-                },
-            ],
-            link: [{ rel: "icon", type: "image/x-icon", href: this.icon }],
-        };
-    },
-    data() {
-        return {
-            menuType: [],
-            menuCategory: [],
-            menuYear: [],
-            showAds: true,
-        };
-    },
-    created() {
-        this.getMenuMovies();
-    },
-    computed: {
-        ...mapState({
-            descriptionFooter: (state) => state.descriptionFooter,
-            logo: (state) => state.logo,
-            icon: (state) => state.icon,
-            slogan: (state) => state.slogan,
-            SEOTitle: (state) => state.SEOTitle,
-            SEODescription: (state) => state.SEODescription,
-            adsBottom: (state) => state.adsBottom,
+// export default {
+//     head() {
+//         return {
+//             title: this.SEOTitle,
+//             meta: [
+//                 {
+//                     hid: "description",
+//                     name: "description",
+//                     content: this.SEODescription,
+//                 },
+//                 {
+//                     name: "keywords",
+//                     content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
+//                 },
+//                 {
+//                     property: "og:title",
+//                     name: "og:title",
+//                     content: this.SEOTitle,
+//                 },
+//                 {
+//                     property: "og:description",
+//                     name: "og:description",
+//                     content: this.SEODescription || "mugquwas open graph meta description",
+//                 },
+//                 {
+//                     property: "og:url",
+//                     name: "og:url",
+//                     content: "https://www.365fullhd.com",
+//                 },
+//                 {
+//                     property: "og:site_name",
+//                     name: "og:site_name",
+//                     content: "365fullhd",
+//                 },
+//                 {
+//                     property: "og:image",
+//                     name: "og:image",
+//                     content: this.logo,
+//                 },
+//             ],
+//             link: [{ rel: "icon", type: "image/x-icon", href: this.icon }],
+//         };
+//     },
+//     data() {
+//         return {
+//             menuType: [],
+//             menuCategory: [],
+//             menuYear: [],
+//             showAds: true,
+//         };
+//     },
+//     created() {
+//         this.getMenuMovies();
+//     },
+//     computed: {
+//         ...mapState({
+//             descriptionFooter: (state) => state.descriptionFooter,
+//             logo: (state) => state.logo,
+//             icon: (state) => state.icon,
+//             slogan: (state) => state.slogan,
+//             SEOTitle: (state) => state.SEOTitle,
+//             SEODescription: (state) => state.SEODescription,
+//             adsBottom: (state) => state.adsBottom,
 
-        }),
-    },
-    mounted() {},
-    methods: {
-        async getMenuMovies() {
-            let url = "movie";
-            if (this._isAV) url = "av";
-            const data = await this.$axios.$get(url + "/listtypeandcate");
-            if (data.code == 200) {
-                this.menuType = data.result.Listdata_type;
-                this.menuCategory = data.result.Listdata_cate;
-            }
-        },
-    },
-};
+//         }),
+//     },
+//     mounted() {},
+//     methods: {
+//         async getMenuMovies() {
+//             let url = "movie";
+//             if (this._isAV) url = "av";
+//             const data = await this.$axios.$get(url + "/listtypeandcate");
+//             if (data.code == 200) {
+//                 this.menuType = data.result.Listdata_type;
+//                 this.menuCategory = data.result.Listdata_cate;
+//             }
+//         },
+//     },
+// };
 </script>
