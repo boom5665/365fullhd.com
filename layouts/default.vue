@@ -4,8 +4,8 @@
             <Header />
             <Banner />
             <div class="text-center">
-                <h2 class="web-title">{{ SEOTitle }}</h2>
-                <h3 class="web-slogan">{{ slogan }}</h3>
+                <h1 class="web-title">{{ SEOTitle }}</h1>
+                <p class="web-slogan">{{ slogan }}</p>
             </div>
             <swiper />
         </b-container>

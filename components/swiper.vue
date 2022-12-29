@@ -1,6 +1,6 @@
 <template>
     <div>
-       <h1>หนังยอดนิยม</h1>
+       <h2>หนังยอดนิยม</h2>
         <vue-glide :breakpoints="{ 400: { perView: 1 }, 700: { perView: 2 }, 1000: { perView: 3 }, 1200: { perView: 4 } }" v-model="active" v-bind="carouselOptions" v-if="movieList.length > 0">
             <template slot="control">
 

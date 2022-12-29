@@ -16,39 +16,68 @@ export default {
         store.commit("setWebTitle", movieObj.full_name);
         return { movieObj };
     },
-    head() {
+ head() {
         return {
-            titleTemplate: (titleChunk) => {
-                return titleChunk ? `${titleChunk} - ` + this.webTitle : this.webTitle;
+           titleTemplate: (titleChunk) => {
+                return titleChunk ? this.movieObj.name_th + ` | ${titleChunk} ` : this.movieObj.name_th;
             },
+            meta: [
+                {
+                    hid: "description",
+                    name: "description",
+                    content: this.SEODescription.replace("{{category}}", this.movieObj.name_th) || "mugquwas open graph meta description",
+                },
+                {
+                    name: "keywords",
+                    content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
+                },
+                {
+                    property: "og:title",
+                    name: "og:title",
+                    content: this.SEOTitle,
+                },
+                {
+                    property: "og:description",
+                    name: "og:description",
+                    content: this.SEODescription.replace("{{category}}", this.movieObj.name_th) || "mugquwas open graph meta description",
+                },
+                {
+                    property: "og:url",
+                    name: "og:url",
+                    content: "https://www.movie365",
+                },
+                {
+                    property: "og:site_name",
+                    name: "og:site_name",
+                    content: "movie365",
+                },
+                {
+                    property: "og:image",
+                    name: "og:image",
+                    content: this.logo,
+                },
+            ],
+            link: [{ rel: "icon", type: "image/x-icon", href: this.icon }],
         };
     },
+    data() {
+        return {};
+    },
     computed: {
-        ...mapState({
-            SEOTitle: (state) => state.SEOTitle,
-            webTitle: (state) => state.webTitle,
-        }),
-        _id() {
-            return parseInt(this.$route.params.id);
-        },
-        _ep() {
-            return this.$route.params.ep;
-        },
         _slug() {
             return this.$route.params.slug;
         },
+        ...mapState({
+            descriptionFooter: (state) => state.descriptionFooter,
+            logo: (state) => state.logo,
+            icon: (state) => state.icon,
+            slogan: (state) => state.slogan,
+            SEOTitle: (state) => state.SEOTitle,
+            SEODescription: (state) => state.SEODescription,
+            adsBottom: (state) => state.adsBottom,
+        }),
     },
-    mounted() {
-        this.playCount();
-    },
-    methods: {
-        playCount() {
-            const self = this;
-            this.$axios.$post("clipsclicker", {
-                movie_id: self._id,
-                movie_type: 0,
-            });
-        },
-    },
+    mounted() {},
+    methods: {},
 };
 </script>

@@ -1,19 +1,27 @@
 <template>
     <div>
         <b-container>
-            <Header :_isAV="true" />
+            <Header />
             <Banner />
-            <div class="text-center">
-                <h2 class="web-title">{{ SEOTitle }}</h2>
-                <h3 class="web-slogan">{{ slogan }}</h3>
+            <!-- <div class="text-center">
+                <h1 class="web-title">{{ SEOTitle }}</h1>
+                <p class="web-slogan">{{ slogan }}</p>
             </div>
+            <swiper /> -->
         </b-container>
-        <div class="full-category-line"></div>
+        <div class="full-category-line">
+            <nuxt-link to="/" class="cat-btn active">หนังยอดนิยม</nuxt-link>
+            <nuxt-link to="/movie/category/action" class="cat-btn">หนังแอคชั่น</nuxt-link>
+            <nuxt-link to="/movie/category/comedy" class="cat-btn">หนังตลก</nuxt-link>
+            <nuxt-link to="/movie/category/drama" class="cat-btn">หนังดราม่า</nuxt-link>
+            <nuxt-link to="/movie/category/horror" class="cat-btn">หนังสยองขวัญ</nuxt-link>
+            <nuxt-link to="/movie/category/adventure" class="cat-btn">หนังผจญภัย</nuxt-link>
+        </div>
         <b-container>
             <b-row>
                 <b-col cols="12" md="3" lg="2">
                     <div class="d-none d-sm-block">
-                        <CategoryList _type="av" />
+                        <CategoryList />
                     </div>
                 </b-col>
                 <b-col cols="12" md="9" lg="10">
@@ -22,7 +30,7 @@
             </b-row>
             <div class="footer-text">
                 <div class="footer-title">{{ slogan }}</div>
-                <div class="footer-content">{{ descriptionFooter }}</div>
+                <div class="footer-content" v-html="descriptionFooter"></div>
             </div>
         </b-container>
         <Footer />
@@ -47,7 +55,7 @@ export default {
                 {
                     hid: "description",
                     name: "description",
-                    content: this.SEODescription,
+                    content: this.SEODescription.replace("หมวดหมู่ {{category}} ", ""),
                 },
                 {
                     name: "keywords",
@@ -61,17 +69,17 @@ export default {
                 {
                     property: "og:description",
                     name: "og:description",
-                    content: this.SEODescription,
+                    content: this.SEODescription.replace("หมวดหมู่ {{category}} ", "") || "mugquwas open graph meta description",
                 },
                 {
                     property: "og:url",
                     name: "og:url",
-                    content: "https://www.365fullhd.com",
+                    content: "https://www.movie365",
                 },
                 {
                     property: "og:site_name",
                     name: "og:site_name",
-                    content: "365fullhd",
+                    content: "movie365",
                 },
                 {
                     property: "og:image",
@@ -104,15 +112,21 @@ export default {
             adsBottom: (state) => state.adsBottom,
         }),
     },
-    mounted() {},
+    mounted() {
+
+    },
     methods: {
+
         async getMenuMovies() {
-            const data = await this.$axios.$get("av/listtypeandcate");
+            const data = await this.$axios.$get("movie/listtypeandcate");
             if (data.code == 200) {
                 this.menuType = data.result.Listdata_type;
                 this.menuCategory = data.result.Listdata_cate;
+                this.metaseo = this.SEODescription.replace("{{category}}", "monkey");
+                console.log(this.metaseo);
             }
         },
     },
 };
 </script>
+

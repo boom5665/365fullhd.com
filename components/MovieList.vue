@@ -1,6 +1,6 @@
 <template>
     <div class="list-container">
-        <h2 class="list-title">{{ _title }}{{ _isSearch ? " : " + _search : "" }}</h2>
+        <h1 class="list-title">{{ _title }}{{ _isSearch ? " : " + _search : "" }}</h1>
         <div class="movie-list-container" v-if="movieList.length">
             <b-row>
                 <b-col cols="6" lg="4" xl="3" v-for="(value, index) in movieList" :key="index">
