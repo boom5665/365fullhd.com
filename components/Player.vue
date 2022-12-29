@@ -4,7 +4,7 @@
         <div class="movie-description">
             {{ _movieObj.description }}
         </div>
-        <div class="preview-header">{{ _isAV ? "ตัวอย่างหนัง:" : "" }} {{ _movieObj.full_name }}</div>
+        <h1 class="preview-header">{{ _isAV ? "ตัวอย่างหนัง:" : "" }} {{ _movieObj.full_name }}</h1>
         <div class="preview-container">
             <div class="preview-poster">
                 <nuxt-img loading="lazy" format="webp" :src="_movieObj.picture" :alt="_movieObj.full_name" />

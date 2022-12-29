@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
     name: "movieCategorySlug",
     async asyncData({ params, $axios }) {
@@ -12,17 +13,66 @@ export default {
         const typeObj = res.result[0];
         return { typeObj };
     },
-    head() {
+      head() {
         return {
             titleTemplate: (titleChunk) => {
-                return titleChunk ? `${titleChunk} - ` + this.typeObj.name_th : this.typeObj.name_th;
+                return titleChunk ? this.typeObj.name_th + ` | ${titleChunk} ` : this.typeObj.name_th;
             },
+            meta: [
+                {
+                    hid: "description",
+                    name: "description",
+                    content: this.SEODescription.replace("{{category}}", this.typeObj.name_th) || "mugquwas open graph meta description",
+                },
+                {
+                    name: "keywords",
+                    content: ["ดูหนัง", "ดูหนังออนไลน์", "ดูซีรี่ย์"],
+                },
+                {
+                    property: "og:title",
+                    name: "og:title",
+                    content: this.SEOTitle,
+                },
+                {
+                    property: "og:description",
+                    name: "og:description",
+                    content: this.SEODescription.replace("{{category}}", this.typeObj.name_th) || "mugquwas open graph meta description",
+                },
+                {
+                    property: "og:url",
+                    name: "og:url",
+                    content: "https://www.movie365",
+                },
+                {
+                    property: "og:site_name",
+                    name: "og:site_name",
+                    content: "movie365",
+                },
+                {
+                    property: "og:image",
+                    name: "og:image",
+                    content: this.logo,
+                },
+            ],
+            link: [{ rel: "icon", type: "image/x-icon", href: this.icon }],
         };
+    },
+    data() {
+        return {};
     },
     computed: {
         _slug() {
             return this.$route.params.slug;
         },
+        ...mapState({
+            descriptionFooter: (state) => state.descriptionFooter,
+            logo: (state) => state.logo,
+            icon: (state) => state.icon,
+            slogan: (state) => state.slogan,
+            SEOTitle: (state) => state.SEOTitle,
+            SEODescription: (state) => state.SEODescription,
+            adsBottom: (state) => state.adsBottom,
+        }),
     },
     mounted() {},
     methods: {},
