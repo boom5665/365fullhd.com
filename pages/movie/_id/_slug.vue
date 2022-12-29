@@ -44,12 +44,12 @@ export default {
                 {
                     property: "og:url",
                     name: "og:url",
-                    content: "https://www.xxxkub",
+                    content: "https://movie365.com",
                 },
                 {
                     property: "og:site_name",
                     name: "og:site_name",
-                    content: "xxxkub",
+                    content: "movie365",
                 },
                 {
                     property: "og:image",
