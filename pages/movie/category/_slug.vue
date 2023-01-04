@@ -17,7 +17,7 @@ export default {
       head() {
         return {
             titleTemplate: (titleChunk) => {
-                return titleChunk ? this.typeObj.name_th + ` | ${titleChunk} ` : this.typeObj.name_th;
+                return titleChunk ? this.typeObj.name_th + ` | movie365` 
             },
             meta: [
                 {
